@@ -22,7 +22,7 @@
 
 /* USER CODE BEGIN 0 */
 uint8_t data;
-
+uint8_t ch20_msg;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -97,6 +97,7 @@ void MX_USART2_UART_Init(void)
     Error_Handler();
   }
   HAL_UART_Receive_IT(&huart2, &data, 1);
+
 }
 /* USART3 init function */
 
@@ -104,7 +105,7 @@ void MX_USART3_UART_Init(void)
 {
 
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
+  huart3.Init.BaudRate = 9600;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
@@ -118,6 +119,7 @@ void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
+  HAL_UART_Receive_IT(&huart3, &ch20_msg, 1);
 
 }
 /* USART4 init function */
