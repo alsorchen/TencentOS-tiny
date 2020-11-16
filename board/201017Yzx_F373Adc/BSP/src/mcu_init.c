@@ -86,6 +86,26 @@ static void MX_RTC_Init(void);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
+void FeedIWDG(void)
+{
+	HAL_IWDG_Refresh(&hiwdg);
+}
+void ToggleLed(void)
+{
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+}
+
+void SetBeeper(int high)
+{
+	if(high)
+	{
+		HAL_TIM_PWM_Start(&htim19,TIM_CHANNEL_3);
+	}
+	else
+	{
+		HAL_TIM_PWM_Stop(&htim19,TIM_CHANNEL_3);
+	}
+}
 
 int fputc(int ch, FILE *f)
 {
@@ -153,7 +173,7 @@ void board_init(void)
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   MX_USB_PCD_Init();
-  MX_IWDG_Init();
+  //MX_IWDG_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
@@ -976,7 +996,7 @@ static void MX_TIM19_Init(void)
   htim19.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim19.Init.Period = 24000;
   htim19.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim19.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  htim19.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_PWM_Init(&htim19) != HAL_OK)
   {
     Error_Handler();
@@ -988,9 +1008,9 @@ static void MX_TIM19_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 12000;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim19, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();

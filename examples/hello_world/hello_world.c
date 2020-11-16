@@ -1,4 +1,5 @@
 #include "cmsis_os.h"
+#include "mcu_init.h"
 
 #define TASK1_STK_SIZE          1024
 void task1(void *arg);
@@ -26,7 +27,10 @@ void task1(void *arg)
 
     while (1) {
         printf("###I am task1\r\n");
-        osDelay(2000);
+		SetBeeper(1);
+        osDelay(100);
+		SetBeeper(0);
+        osDelay(3900);
 
 #if TOS_CFG_TASK_DYNAMIC_CREATE_EN > 0u
         if (count++ == 3) {
@@ -39,6 +43,7 @@ void task1(void *arg)
 
 void task2(void *arg)
 {
+	uint8_t i;
     while (1) {
 #if TOS_CFG_TASK_STACK_DRAUGHT_DEPTH_DETACT_EN > 0u
         k_err_t rc;
@@ -49,7 +54,12 @@ void task2(void *arg)
 #endif
 
         printf("***I am task2\r\n");
-        osDelay(1000);
+		for(i=0;i<8;i++)
+		{
+			osDelay(250);
+			ToggleLed();
+		}
+		//FeedIWDG();
     }
 }
 

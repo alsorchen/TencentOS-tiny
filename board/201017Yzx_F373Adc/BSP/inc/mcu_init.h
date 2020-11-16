@@ -12,7 +12,9 @@
 
 void board_init(void);
 void SystemClock_Config(void);
-
+void FeedIWDG(void);
+void ToggleLed(void);
+void SetBeeper(int high);
 #ifdef __cplusplus
 }
 #endif
