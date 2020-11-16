@@ -44,6 +44,7 @@ void task1(void *arg)
 void task2(void *arg)
 {
 	uint8_t i;
+	Start4Phase();
     while (1) {
 #if TOS_CFG_TASK_STACK_DRAUGHT_DEPTH_DETACT_EN > 0u
         k_err_t rc;

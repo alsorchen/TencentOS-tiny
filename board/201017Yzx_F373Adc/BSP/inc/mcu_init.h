@@ -15,6 +15,7 @@ void SystemClock_Config(void);
 void FeedIWDG(void);
 void ToggleLed(void);
 void SetBeeper(int high);
+void Start4Phase(void);
 #ifdef __cplusplus
 }
 #endif
