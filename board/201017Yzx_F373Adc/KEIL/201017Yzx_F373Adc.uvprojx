@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>STM32F373\</OutputDirectory>
-          <OutputName>STM32F373</OutputName>
+          <OutputName>F373Adc</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F373xC</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../../../platform/vendor_bsp/st/STM32F3xx_HAL_Driver/Inc;../../../platform/vendor_bsp/st/STM32F3xx_HAL_Driver/Inc/Legacy;../../../platform/vendor_bsp/st/CMSIS/Device/ST/STM32F3xx/Include;../../../platform/vendor_bsp/st/CMSIS/Include</IncludePath>
+              <IncludePath>../Core/Inc;..\BSP\Inc;../../../platform/vendor_bsp/st/STM32F3xx_HAL_Driver/Inc;../../../platform/vendor_bsp/st/STM32F3xx_HAL_Driver/Inc/Legacy;../../../platform/vendor_bsp/st/CMSIS/Device/ST/STM32F3xx/Include;../../../platform/vendor_bsp/st/CMSIS/Include;..\..\..\kernel\core\include;..\..\..\kernel\pm\include;..\..\..\arch\arm\arm-v7m\common\include;..\..\..\arch\arm\arm-v7m\cortex-m4\armcc;..\TOS-CONFIG;..\..\..\osal\cmsis_os</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -570,12 +570,222 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>kernel</GroupName>
+          <Files>
+            <File>
+              <FileName>tos_event.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_event.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_global.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_global.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_mmblk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_mmblk.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_mmheap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_mmheap.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_mutex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_mutex.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_pend.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_pend.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_robin.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_robin.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_sched.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_sched.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_sem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_sem.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_tick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_tick.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_pm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\pm\tos_pm.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_tickless.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\pm\tos_tickless.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_binary_heap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_binary_heap.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_char_fifo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_char_fifo.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_completion.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_completion.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_countdownlatch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_countdownlatch.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_mail_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_mail_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_message_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_message_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_priority_mail_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_priority_mail_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_priority_message_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_priority_message_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_priority_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_priority_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_ring_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\kernel\core\tos_ring_queue.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cpu</GroupName>
+          <Files>
+            <File>
+              <FileName>port_c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\arch\arm\arm-v7m\cortex-m4\armcc\port_c.c</FilePath>
+            </File>
+            <File>
+              <FileName>port_s.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\..\..\arch\arm\arm-v7m\cortex-m4\armcc\port_s.S</FilePath>
+            </File>
+            <File>
+              <FileName>tos_cpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\arch\arm\arm-v7m\common\tos_cpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>tos_fault.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\arch\arm\arm-v7m\common\tos_fault.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Drivers/CMSIS</GroupName>
           <Files>
             <File>
               <FileName>system_stm32f3xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/system_stm32f3xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cmsis</GroupName>
+          <Files>
+            <File>
+              <FileName>cmsis_os.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\osal\cmsis_os\cmsis_os.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>config</GroupName>
+          <Files>
+            <File>
+              <FileName>tos_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\TOS-CONFIG\tos_config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>examples</GroupName>
+          <Files>
+            <File>
+              <FileName>hello_world.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\examples\hello_world\hello_world.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>tickless_bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_pwr_mgr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Src\tickless\bsp_pwr_mgr.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_pm_device.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Src\tickless\bsp_pm_device.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_tickless_alarm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\Src\tickless\bsp_tickless_alarm.c</FilePath>
             </File>
           </Files>
         </Group>

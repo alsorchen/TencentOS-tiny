@@ -1,7 +1,7 @@
 #ifndef _TOS_CONFIG_H_
 #define  _TOS_CONFIG_H_
 
-#include "stm32f7xx.h"
+#include "stm32f3xx.h"
 
 #define TOS_CFG_TASK_PRIO_MAX       10u
 
