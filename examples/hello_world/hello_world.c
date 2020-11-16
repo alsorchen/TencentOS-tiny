@@ -16,6 +16,7 @@ void task3(void *arg);
 
 void task1(void *arg)
 {
+	int j = 0;
 #if TOS_CFG_TASK_DYNAMIC_CREATE_EN > 0u
     osThreadId task_dyn_created;
 
@@ -26,7 +27,7 @@ void task1(void *arg)
 #endif
 
     while (1) {
-        printf("###I am task1\r\n");
+        printf("###I am task1,%3d\r\n",j++);
 		SetBeeper(1);
         osDelay(100);
 		SetBeeper(0);
@@ -44,6 +45,7 @@ void task1(void *arg)
 void task2(void *arg)
 {
 	uint8_t i;
+	int j=0;
 	Start4Phase();
     while (1) {
 #if TOS_CFG_TASK_STACK_DRAUGHT_DEPTH_DETACT_EN > 0u
@@ -54,13 +56,15 @@ void task2(void *arg)
         printf("%d  %d\n", rc, depth);
 #endif
 
-        printf("***I am task2\r\n");
+        printf("***I am task2,%3d\r\n",j);
 		for(i=0;i<8;i++)
 		{
 			osDelay(250);
 			ToggleLed();
 		}
-		//FeedIWDG();
+//		if(j<10)
+		FeedIWDG();
+		j++;
     }
 }
 
