@@ -410,6 +410,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Application/BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>mcu_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\src\mcu_init.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Drivers/STM32F3xx_HAL_Driver</GroupName>
           <Files>
             <File>
