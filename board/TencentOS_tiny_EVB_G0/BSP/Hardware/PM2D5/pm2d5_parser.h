@@ -24,17 +24,17 @@
 #define PM2D5_PARSER_TASK_PRIO          5
 #define PM2D5_PARSER_BUFFER_SIZE        64
 
-/* PM2.5 Êı¾İ½âÎöÆ÷¿ØÖÆ¿é */
+/* PM2.5 æ•°æ®è§£æå™¨æ§åˆ¶å— */
 typedef struct pm2d5_parser_control_st {
-    k_task_t     parser_task;       //½âÎöÆ÷ÈÎÎñ¿ØÖÆ¿é
+    k_task_t     parser_task;       //è§£æå™¨ä»»åŠ¡æ§åˆ¶å—
     
-    k_sem_t      parser_rx_sem;     //±íÊ¾½âÎöÆ÷´Ó´®¿Ú½ÓÊÕµ½Êı¾İ
-    k_chr_fifo_t parser_rx_fifo;    //´æ·Å½âÎöÆ÷½ÓÊÕµ½µÄÊı
+    k_sem_t      parser_rx_sem;     //è¡¨ç¤ºè§£æå™¨ä»ä¸²å£æ¥æ”¶åˆ°æ•°æ®
+    k_chr_fifo_t parser_rx_fifo;    //å­˜æ”¾è§£æå™¨æ¥æ”¶åˆ°çš„æ•°æ®
 } pm2d5_parser_ctrl_t;
 
 /**
- * @brief   ½âÎö³öµÄPM2D5Êı¾İÖµ
- * @note    ¿ÉÒÔ×÷ÎªÓÊ¼ş·¢ËÍ¸øÆäËûÈÎÎñ½øĞĞ½øÒ»²½´¦Àí
+ * @brief   è§£æå‡ºçš„PM2D5æ•°æ®å€¼
+ * @note    å¯ä»¥ä½œä¸ºé‚®ä»¶å‘é€ç»™å…¶ä»–ä»»åŠ¡è¿›è¡Œè¿›ä¸€æ­¥å¤„ç†
  */
 typedef struct pm2d5_data_st {
     uint16_t    data1;
@@ -49,7 +49,8 @@ typedef struct pm2d5_data_st {
     uint16_t    data10;
     uint16_t    data11;
     uint16_t    data12;
-    uint16_t    data13;
+    uint8_t     version;
+    uint8_t     err_code;
 }pm2d5_data_t;
 
 typedef union pm2d5_data_un {
